@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IdentityRole>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "List of Roles";
+}
+
+
+<div class="container rounded bg-dark my-3">
+    <h1 class="text-center pt-3">Role Lists</h1>
+
+    @if (Model.Any())
+    {
+        <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="Administration">
+            Add new role
+        </a>
+        foreach (var role in Model)
+        {
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="card text-white bg-success mb-3 w-100">
+                            <div class="card-header text-white bg-success">
+                                @role.Id
+                            </div>
+                            <div class="card-body mb-3 pb-3">
+                                <h5 class="card-title"> @role.Name</h5>
+                                <p class="card-text">This role is available for users. You may designate users to this role.</p>
+                                <a class="btn btn-warning" asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                        <hr />
+                        }
+
+
+                        }
+                        else
+                        {
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header">
+                                No roles created yet
+                            </div>
+                        </div>
+                        <div class="card-body bg-dark mb-3">
+                            <h5 class="card-title">
+                                Use the button below to create a role
+                            </h5>
+                            <a class="btn btn-primary" style="width:auto" asp-controller="Administration" asp-action="CreateRole">
+                                Create Role
+                            </a>
+                        </div>
+                        }
+
+                        <hr />
+                        <div class="mt-2">
+
+                        </div>
+                    </div>
